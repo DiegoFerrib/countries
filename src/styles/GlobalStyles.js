@@ -7,12 +7,12 @@ export default createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     font-family: 'Nunito Sans', sans-serif;
-    color: ${colors.veryDarkBlueLight};
   }
 
   #root {
     min-height: 100vh;
     background-color: ${colors.veryLightGray};
+    color: ${colors.veryDarkBlueLight};
   }
 
   button {
