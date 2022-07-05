@@ -7,7 +7,7 @@ export const Header = styled.header`
   box-shadow: 0px 3px 5px 0px rgba(151,151,151,0.8);
 
   h1 {
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 800;
   }
 
@@ -22,5 +22,3 @@ export const Header = styled.header`
     align-items: center;
   }
 `;
-
-export const L = '';
