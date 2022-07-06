@@ -1,24 +1,20 @@
 import styled from 'styled-components';
-import colors from '../../config/colors';
 
 export const Search = styled.div`
   padding: 48px 30px;
 
   label {
-    background-color: green;
-    box-shadow: 0px 0px 10px 4px rgba(151,151,151,0.2);
+    box-shadow: 0px 0px 10px 4px rgba(151,151,151,0.1);
     padding: 10px;
+    border-radius: 5px;
   }
 
   #search {
     font-size: 16px;
     width: 480px;
     border: none;
-  }
-
-  .center {
-    display: flex;
-    justify-content: space-between;
+    background-color: inherit;
+    outline: none;
   }
 
   select {
@@ -26,36 +22,34 @@ export const Search = styled.div`
     width: 100%;
     max-width: 200px;
     border: none;
-    box-shadow: 0px 0px 10px 4px rgba(151,151,151,0.2);
+    box-shadow: 0px 0px 10px 4px rgba(151,151,151,0.1);
+    border-radius: 5px;
   }
 `;
 
 export const GridMap = styled.section`
   padding: 0 30px;
-
-  .center {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 50px;
-  }
 `;
 
 export const Countrie = styled.div`
   display: flex;
   border-radius: 8px;
   flex-direction: column;
-  width: 100%;
-  max-width: 262px;
+  width: 262px;
   height: 334px;
-  background-color: ${colors.white};
-  box-shadow: 0px 0px 10px 4px rgba(151,151,151,0.2);
+  box-shadow: 0px 0px 10px 4px rgba(151,151,151,0.1);
+  transition: 400ms;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 
   .informations {
-    padding: 25px;
+    padding: 20px;
 
     h2 {
-      font-size: 20px;
+      font-size: 25px;
+      margin-bottom: 20px;
     }
   }
 

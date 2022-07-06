@@ -1,12 +1,10 @@
 import styled from 'styled-components';
-import colors from '../../config/colors';
 
 export const Header = styled.header`
-  background-color: ${colors.white};
   padding: 30px;
-  box-shadow: 0px 3px 5px 0px rgba(151,151,151,0.8);
+  box-shadow: 0px 7px 5px 0px rgba(117,117,117,0.9);
 
-  h1 {
+  .center a .inicial_text {
     font-size: 22px;
     font-weight: 800;
   }

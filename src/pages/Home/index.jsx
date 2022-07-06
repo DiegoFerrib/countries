@@ -1,15 +1,31 @@
-/* eslint-disable react/no-array-index-key */
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux/es/exports';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import {
   GridMap, Search, Countrie,
 } from './styled';
 
+import { Center } from '../../styles/GlobalStyles';
 import Loading from '../../components/Loading';
+import colors from '../../config/colors';
 import axios from '../../services/axios';
 
+const centerSearchStyle = {
+  display: 'flex',
+  justifyContent: 'space-between',
+};
+
+const centerGridMapStyle = {
+  display: 'flex',
+  flexWrap: 'wrap',
+  justifyContent: 'space-between',
+  gap: '50px',
+};
+
 export default () => {
+  const theme = useSelector((state) => state.theme);
+
   const [countries, setCountries] = useState('');
   const [searchedCountrie, setSearchedCountrie] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -43,24 +59,42 @@ export default () => {
       setCountries(data);
       setIsLoading(false);
     } catch {
-      toast.error('OI');
+      toast.error('Could not get data!');
       setIsLoading(false);
     }
   };
+
   return (
-    <>
+    <section style={{
+      backgroundColor: theme === 'light' ? colors.veryLightGray : colors.veryDarkBlueDark,
+    }}
+    >
       <Search>
-        <div className="center">
-          <label htmlFor="search">
+        <Center style={centerSearchStyle}>
+          <label
+            htmlFor="search"
+            style={{
+              backgoundColor: theme === 'light' ? colors.white : colors.darkBlue,
+            }}
+          >
             <input
               type="search"
               id="search"
               placeholder="Search for a countrie..."
               value={searchedCountrie}
               onChange={({ target }) => setSearchedCountrie(target.value)}
+              style={{
+                color: theme === 'light' ? colors.darkBlue : colors.white,
+              }}
             />
           </label>
-          <select defaultValue="all" onChange={({ target }) => filterCountriesPerRegion(target.value)}>
+          <select
+            defaultValue="all"
+            onChange={({ target }) => filterCountriesPerRegion(target.value)}
+            style={{
+              backgoundColor: theme === 'light' ? colors.white : colors.darkBlue,
+            }}
+          >
             <option value="all">All</option>
             <option value="africa">Africa</option>
             <option value="america">America</option>
@@ -68,31 +102,39 @@ export default () => {
             <option value="europe">Europe</option>
             <option value="oceania">Oceania</option>
           </select>
-        </div>
+        </Center>
       </Search>
 
       <GridMap>
-        <div className="center">
+        <Center style={centerGridMapStyle}>
           { countries && !searchedCountrie && countries.map(({
             name, region, capital, flags, population,
-          }, index) => (
-            <Link to="/">
-              <Countrie key={index}>
+          }) => (
+            <Link to="/" key={flags.svg}>
+              <Countrie style={{
+                backgoundColor: theme === 'light' ? colors.white : colors.darkBlue,
+              }}
+              >
                 <img src={flags.svg} alt={`Flag: ${name.common}`} />
-                <div className="informations">
+                <div
+                  className="informations"
+                  style={{
+                    color: theme === 'light' ? colors.darkBlue : colors.white,
+                  }}
+                >
                   <h2>{name.common}</h2>
                   <p>
-                    Population:
+                    <strong>Population:</strong>
                     {' '}
                     {population}
                   </p>
                   <p>
-                    Region:
+                    <strong>Region:</strong>
                     {' '}
                     {region}
                   </p>
                   <p>
-                    Capital:
+                    <strong>Capital:</strong>
                     {' '}
                     {capital}
                   </p>
@@ -100,9 +142,9 @@ export default () => {
               </Countrie>
             </Link>
           ))}
-        </div>
+        </Center>
       </GridMap>
       <Loading isLoading={isLoading} />
-    </>
+    </section>
   );
 };

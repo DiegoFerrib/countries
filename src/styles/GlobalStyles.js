@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import 'react-toastify/dist/ReactToastify.css';
 import colors from '../config/colors';
 
@@ -22,15 +22,8 @@ export default createGlobalStyle`
     cursor: pointer;
   }
 
-  .center {
-    width: 100%;
-    max-width: 1276px;
-    margin: 0 auto;
-  }
-
   a {
     text-decoration: none;
-    color: ${colors.veryDarkBlueLight};
   }
 
   body .Toastify .Toastify__toast-container .Toastify__toast--success {
@@ -39,4 +32,10 @@ export default createGlobalStyle`
   body .Toastify .Toastify__toast-container .Toastify__toast--error {
     background: red;
   }
+`;
+
+export const Center = styled.div`
+  width: 100%;
+  max-width: 1276px;
+  margin: 0 auto;
 `;
