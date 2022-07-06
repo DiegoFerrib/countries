@@ -5,6 +5,7 @@ import { Header } from './styled';
 
 import * as actions from '../../store/modules/theme-switcher/actions';
 import colors from '../../config/colors';
+import { Center } from '../../styles/GlobalStyles';
 
 export default () => {
   const dispatch = useDispatch();
@@ -19,7 +20,12 @@ export default () => {
       backgroundColor: theme === 'light' ? colors.white : colors.darkBlue,
     }}
     >
-      <div className="center">
+      <Center style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+      }}
+      >
         <Link to="/">
           <h1
             className="inicial_text"
@@ -42,7 +48,7 @@ export default () => {
         >
           Dark Mode
         </button>
-      </div>
+      </Center>
     </Header>
   );
 };
