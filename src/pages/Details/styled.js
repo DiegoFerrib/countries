@@ -1,20 +1,50 @@
 import styled from 'styled-components';
 
 export const DetailsPage = styled.section`
-  min-height: 90vh;
+  .button-separator {
+    padding: 70px 0;
+  }
+
+  @media(max-width: 768px) {
+    .button-separator {
+      padding: 40px 0;
+    }
+  }
 `;
 
 export const CountrieDetails = styled.section`
   display: flex;
+  gap: 10px;
   justify-content: space-between;
+  flex-wrap: wrap;
 
   .countrie_data {
     display: flex;
+    gap: 20px;
   }
 
   img {
-    width: 50%;
+    width: 40%;
+    max-width: 550px;
     object-fit: cover;
+  }
+
+  .data {
+    width: 40%;
+    max-width: 550px;
+    padding: 30px 0;
+  }
+
+
+  @media(max-width: 768px) {
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+
+    img, .data {
+      width: 100%;
+      max-width: none;
+    }
   }
 `;
 

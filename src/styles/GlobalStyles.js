@@ -7,6 +7,7 @@ export default createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    outline: 0;
     font-family: 'Nunito Sans', sans-serif;
   }
 
@@ -26,11 +27,10 @@ export default createGlobalStyle`
     text-decoration: none;
   }
 
-  body .Toastify .Toastify__toast-container .Toastify__toast--success {
-    background: green;
-  }
   body .Toastify .Toastify__toast-container .Toastify__toast--error {
-    background: red;
+  border-color: #e8273b;
+  color: #FFF;
+  background-color: #ed5565;
   }
 `;
 

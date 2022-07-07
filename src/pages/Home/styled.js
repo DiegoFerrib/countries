@@ -29,7 +29,19 @@ export const Search = styled.div`
 `;
 
 export const GridMap = styled.section`
-  padding: 0 30px;
+  padding: 0 30px 30px 30px;
+
+  @media(max-width: 768px) {
+    .center {
+      justify-content: center !important;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+    }
+
+    .countrie {
+      width: auto;
+      max-width: none;
+    }
+  }
 `;
 
 export const Countrie = styled.div`
@@ -37,7 +49,7 @@ export const Countrie = styled.div`
   border-radius: 8px;
   flex-direction: column;
   width: 100%;
-  height: 350px;
+  height: 380px;
   box-shadow: 0px 0px 10px 4px rgba(151,151,151,0.1);
   transition: 400ms;
 

@@ -1,11 +1,12 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Header } from './styled';
+import { FaMoon, FaSun } from 'react-icons/fa';
 
+import { Center } from '../../styles/GlobalStyles';
+import { Header } from './styled';
 import * as actions from '../../store/modules/theme-switcher/actions';
 import colors from '../../config/colors';
-import { Center } from '../../styles/GlobalStyles';
 
 export default () => {
   const dispatch = useDispatch();
@@ -20,12 +21,14 @@ export default () => {
       backgroundColor: theme === 'light' ? colors.white : colors.darkBlue,
     }}
     >
-      <Center style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: '0 30px',
-      }}
+      <Center
+        className="center"
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          padding: '0 30px',
+        }}
       >
         <Link to="/">
           <h1
@@ -41,13 +44,13 @@ export default () => {
         <button
           type="button"
           className="dark_mode"
-          id="theme_toggle"
           onClick={themeSwitcher}
           style={{
             color: theme === 'light' ? colors.darkBlue : colors.white,
           }}
         >
-          Dark Mode
+          {theme === 'light' ? <FaMoon color={colors.veryDarkBlue} size={20} /> : <FaSun color={colors.white} size={20} />}
+          <span>Dark Mode</span>
         </button>
       </Center>
     </Header>

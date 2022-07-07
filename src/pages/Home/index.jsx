@@ -14,6 +14,8 @@ import axios from '../../services/axios';
 const centerSearchStyle = {
   display: 'flex',
   justifyContent: 'space-between',
+  gap: '30px',
+  flexWrap: 'wrap',
 };
 
 const centerGridMapStyle = {
@@ -24,7 +26,7 @@ const centerGridMapStyle = {
 };
 
 export default () => {
-  const theme = useSelector((state) => state.themeSwitcher.theme);
+  const theme = useSelector(({ themeSwitcher }) => themeSwitcher.theme);
 
   const [countries, setCountries] = useState('');
   const [searchedCountrie, setSearchedCountrie] = useState('');
@@ -108,11 +110,11 @@ export default () => {
         </Search>
 
         <GridMap>
-          <Center style={centerGridMapStyle}>
+          <Center style={centerGridMapStyle} className="center">
             { countries && !searchedCountrie && countries.map(({
               name, region, capital, flags, population,
             }) => (
-              <Link to={`/details/${name.common.toLowerCase()}`} key={flags.svg}>
+              <Link to={`/details/${name.common.toLowerCase()}`} key={flags.svg} className="countrie">
                 <Countrie style={{
                   backgoundColor: theme === 'light' ? colors.white : colors.darkBlue,
                 }}
@@ -128,7 +130,7 @@ export default () => {
                     <p>
                       <strong>Population:</strong>
                       {' '}
-                      {population}
+                      {population.toLocaleString('en-US')}
                     </p>
                     <p>
                       <strong>Region:</strong>

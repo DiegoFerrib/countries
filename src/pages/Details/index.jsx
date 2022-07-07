@@ -2,12 +2,12 @@
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-
 import { toast } from 'react-toastify';
-import history from '../../services/history';
+
 import { Button, CountrieDetails, DetailsPage } from './styled';
 import { Center } from '../../styles/GlobalStyles';
 import Loading from '../../components/Loading';
+import history from '../../services/history';
 import colors from '../../config/colors';
 import axios from '../../services/axios';
 
@@ -26,66 +26,111 @@ export default function Details({ match }) {
         setCountrieData(data[0]);
         setIsLoading(false);
       } catch (e) {
-        console.log(e);
         setIsLoading(false);
         toast.error('Could not get data!');
       }
     })();
   }, []);
 
-  console.log(countrieData.name);
-
   return (
-    <>
-      <DetailsPage style={{
-        backgroundColor: theme === 'light' ? colors.veryLightGray : colors.veryDarkBlueDark,
+    <DetailsPage style={{
+      backgroundColor: theme === 'light' ? colors.veryLightGray : colors.veryDarkBlueDark,
+      minHeight: '90vh',
+    }}
+    >
+      <Center style={{
+        padding: '0 30px',
       }}
       >
-        <Center style={{
-          padding: '70px 0',
-        }}
-        >
-          <div className="button-separator">
-            <Button
-              style={{
-                backgroundColor: theme === 'light' ? colors.white : colors.darkBlue,
-                color: theme === 'light' ? colors.darkBlue : colors.white,
-              }}
-              onClick={() => history.push('/')}
-            >
-              Back
-            </Button>
-          </div>
-        </Center>
-        <Center>
-          {countrieData
+        <div className="button-separator">
+          <Button
+            style={{
+              backgroundColor: theme === 'light' ? colors.white : colors.darkBlue,
+              color: theme === 'light' ? colors.darkBlue : colors.white,
+            }}
+            onClick={() => history.push('/')}
+          >
+            Back
+          </Button>
+        </div>
+
+        {countrieData
         && (
-        <CountrieDetails>
-          <img src={countrieData.flags.svg} alt="" />
-          <section>
+        <CountrieDetails className="countrie_details">
+          <img src={countrieData.flags.svg} alt={countrieData.name.common} />
+          <section
+            className="data"
+            style={{
+              color: theme === 'light' ? colors.darkBlue : colors.white,
+            }}
+          >
             <h2>{countrieData.name.common}</h2>
             <div className="countrie_data">
               <div className="data">
-                <p>Native Name: </p>
-                <p>Population: </p>
-                <p>Region: </p>
-                <p>Sub Region: </p>
-                <p>Capital: </p>
+                <p>
+                  <strong>Native Name:</strong>
+                  {' '}
+                  {countrieData.name.official}
+                </p>
+                <p>
+                  <strong>Population:</strong>
+                  {' '}
+                  {countrieData.population.toLocaleString('en-US')}
+                </p>
+                <p>
+                  <strong>Region:</strong>
+                  {' '}
+                  {countrieData.region}
+                </p>
+                <p>
+                  <strong>Sub Region:</strong>
+                  {' '}
+                  {countrieData.subregion && countrieData.subregion}
+                </p>
+                <p>
+                  <strong>Capital:</strong>
+                  {' '}
+                  {countrieData.capital && countrieData.capital[0]}
+                </p>
               </div>
               <div className="data">
-                <p>Top Level Domain: </p>
-                <p>Currencies: </p>
-                <p>Languages: </p>
+                <p>
+                  <strong>Top Level Domain:</strong>
+                  {' '}
+                  {countrieData.tld && countrieData.tld[0]}
+                </p>
+                <p>
+                  <strong>Currencies:</strong>
+                  {' '}
+                  {countrieData.currencies && (
+                    Object.values(
+                      countrieData.currencies,
+                    ).map(
+                      (currencie) => currencie.name,
+                    )
+                  ).join(', ')}
+                </p>
+                <p>
+                  <strong>Languages:</strong>
+                  {' '}
+                  {countrieData.languages && (
+                    Object.values(
+                      countrieData.languages,
+                    ).map(
+                      (language) => language,
+                    )
+                  ).join(', ')}
+                </p>
               </div>
             </div>
           </section>
         </CountrieDetails>
         )}
 
-        </Center>
-      </DetailsPage>
+      </Center>
       <Loading isLoading={isLoading} />
-    </>
+    </DetailsPage>
+
   );
 }
 
