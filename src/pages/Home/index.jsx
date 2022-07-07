@@ -24,7 +24,7 @@ const centerGridMapStyle = {
 };
 
 export default () => {
-  const theme = useSelector((state) => state.theme);
+  const theme = useSelector((state) => state.themeSwitcher.theme);
 
   const [countries, setCountries] = useState('');
   const [searchedCountrie, setSearchedCountrie] = useState('');

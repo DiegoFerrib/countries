@@ -6,7 +6,7 @@ const initialState = {
   theme: 'light',
 };
 
-export default (state = initialState, action) => {
+export default function themeSwitcher(state = initialState, action) {
   switch (action.type) {
     case types.SWITCH_THEME: {
       if (state.theme === 'light') {
@@ -19,4 +19,4 @@ export default (state = initialState, action) => {
       return state;
     }
   }
-};
+}

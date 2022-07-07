@@ -5,7 +5,7 @@ export const Header = styled.header`
   line-height: 10vh;
   box-shadow: 0px 7px 5px 0px rgba(117,117,117,0.9);
 
-  .center a .inicial_text {
+  a .inicial_text {
     font-size: 22px;
     font-weight: 800;
   }

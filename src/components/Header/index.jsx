@@ -9,7 +9,7 @@ import { Center } from '../../styles/GlobalStyles';
 
 export default () => {
   const dispatch = useDispatch();
-  const theme = useSelector((state) => state.theme);
+  const theme = useSelector((state) => state.themeSwitcher.theme);
 
   const themeSwitcher = () => {
     dispatch(actions.switchTheme());
@@ -24,6 +24,7 @@ export default () => {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
+        padding: '0 30px',
       }}
       >
         <Link to="/">

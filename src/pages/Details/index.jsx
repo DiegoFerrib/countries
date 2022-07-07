@@ -12,7 +12,7 @@ import colors from '../../config/colors';
 import axios from '../../services/axios';
 
 export default function Details({ match }) {
-  const theme = useSelector((state) => state.theme);
+  const theme = useSelector((state) => state.themeSwitcher.theme);
 
   const countryName = match.params.countrie;
   const [isLoading, setIsLoading] = useState(false);
