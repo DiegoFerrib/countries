@@ -25,7 +25,7 @@ export default function Details({ match }) {
         const { data } = await axios.get(`/name/${countryName}`);
         setCountrieData(data[0]);
         setIsLoading(false);
-      } catch (e) {
+      } catch {
         setIsLoading(false);
         toast.error('Could not get data!');
       }
@@ -123,10 +123,15 @@ export default function Details({ match }) {
                 </p>
               </div>
             </div>
+            <div className="more_infos">
+              Border Countries:
+              {countrieData.borders > 0 && countrieData
+                .borders
+                .map((border) => <span>{border}</span>)}
+            </div>
           </section>
         </CountrieDetails>
         )}
-
       </Center>
       <Loading isLoading={isLoading} />
     </DetailsPage>

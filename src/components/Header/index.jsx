@@ -19,6 +19,7 @@ export default () => {
   return (
     <Header style={{
       backgroundColor: theme === 'light' ? colors.white : colors.darkBlue,
+      padding: '0 30px',
     }}
     >
       <Center
@@ -27,7 +28,6 @@ export default () => {
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          padding: '0 30px',
         }}
       >
         <Link to="/">

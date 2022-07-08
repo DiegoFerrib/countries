@@ -17,6 +17,7 @@ export const CountrieDetails = styled.section`
   gap: 10px;
   justify-content: space-between;
   flex-wrap: wrap;
+  min-height: 300px;
 
   .countrie_data {
     display: flex;
@@ -24,15 +25,28 @@ export const CountrieDetails = styled.section`
   }
 
   img {
-    width: 40%;
+    width: 49%;
     max-width: 550px;
     object-fit: cover;
+    box-shadow: 0px 0px 10px 4px rgba(151,151,151,0.1);
   }
 
   .data {
     width: 40%;
     max-width: 550px;
     padding: 30px 0;
+  }
+
+  .more_infos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .more_infos span {
+    padding: 4px 8px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 10px 4px rgba(151,151,151,0.1);
   }
 
 

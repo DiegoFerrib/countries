@@ -4,6 +4,9 @@ export const Search = styled.div`
   padding: 48px 30px;
 
   label {
+    display: flex;
+    height: 40px;
+    gap: 8px;
     width: 100%;
     max-width: 480px;
     box-shadow: 0px 0px 10px 4px rgba(151,151,151,0.1);
@@ -11,7 +14,12 @@ export const Search = styled.div`
     border-radius: 5px;
   }
 
+  form {
+    width: 100%;
+  }
+
   #search {
+    width: 100%;
     font-size: 16px;
     border: none;
     background-color: inherit;
@@ -20,6 +28,7 @@ export const Search = styled.div`
 
   select, option {
     font-size: 16px;
+    height: 40px;
     width: 100%;
     max-width: 200px;
     border: none;
@@ -52,6 +61,16 @@ export const Countrie = styled.div`
   height: 380px;
   box-shadow: 0px 0px 10px 4px rgba(151,151,151,0.1);
   transition: 400ms;
+  animation: animation 500ms;
+
+  @keyframes animation {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 
   &:hover {
     transform: scale(1.05);

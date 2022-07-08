@@ -1,6 +1,4 @@
 import styled, { createGlobalStyle } from 'styled-components';
-import 'react-toastify/dist/ReactToastify.css';
-import colors from '../config/colors';
 
 export default createGlobalStyle`
   * {
@@ -13,8 +11,6 @@ export default createGlobalStyle`
 
   #root {
     min-height: 100vh;
-    background-color: ${colors.veryLightGray};
-    color: ${colors.veryDarkBlueLight};
   }
 
   button {
@@ -25,12 +21,6 @@ export default createGlobalStyle`
 
   a {
     text-decoration: none;
-  }
-
-  body .Toastify .Toastify__toast-container .Toastify__toast--error {
-  border-color: #e8273b;
-  color: #FFF;
-  background-color: #ed5565;
   }
 `;
 

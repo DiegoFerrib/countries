@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux/es/exports';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { FaSearch } from 'react-icons/fa';
 import {
   GridMap, Search, Countrie,
 } from './styled';
@@ -41,9 +42,18 @@ export default () => {
         setCountries(data);
         setIsLoading(false);
       } catch {
-        toast.error('Could not get data!');
+        toast.error('Could not get data!', {
+          position: 'top-right',
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: theme === 'light' ? 'light' : 'dark',
+        });
         setIsLoading(false);
       }
+      setSearchedCountrie('');
     })();
   }, []);
 
@@ -53,12 +63,14 @@ export default () => {
       if (filterValue === 'all') {
         const { data } = await axios.get(`/${filterValue}`);
         setCountries(data);
+        setSearchedCountrie('');
         setIsLoading(false);
         return;
       }
 
       const { data } = await axios.get(`/region/${filterValue}`);
       setCountries(data);
+      setSearchedCountrie('');
       setIsLoading(false);
     } catch {
       toast.error('Could not get data!');
@@ -66,20 +78,42 @@ export default () => {
     }
   };
 
+  const searchCountrie = async (e) => {
+    e.preventDefault();
+    if (searchedCountrie.length > 0) {
+      try {
+        setIsLoading(true);
+        const { data } = await axios.get(`/name/${searchedCountrie}`);
+        setCountries(data);
+        setSearchedCountrie('');
+        setIsLoading(false);
+      } catch {
+        setSearchedCountrie('');
+        setIsLoading(false);
+        toast.error('Could not get data!');
+      }
+    }
+  };
+
   return (
-    <>
-      <section style={{
-        backgroundColor: theme === 'light' ? colors.veryLightGray : colors.veryDarkBlueDark,
-        minHeight: '90vh',
-      }}
-      >
-        <Search>
-          <Center style={centerSearchStyle}>
-            <label
-              htmlFor="search"
-              style={{
-                backgoundColor: theme === 'light' ? colors.white : colors.darkBlue,
-              }}
+    <section style={{
+      backgroundColor: theme === 'light' ? colors.veryLightGray : colors.veryDarkBlueDark,
+      minHeight: '90vh',
+    }}
+    >
+      <Search>
+        <Center style={centerSearchStyle}>
+          <label
+            htmlFor="search"
+            style={{
+              backgoundColor: theme === 'light' ? colors.white : colors.darkBlue,
+            }}
+          >
+            <FaSearch color={theme === 'light' ? colors.darkBlue : colors.white} size={20} />
+            <form
+              method="get"
+              onSubmit={searchCountrie}
+              autoComplete="off"
             >
               <input
                 type="search"
@@ -91,27 +125,30 @@ export default () => {
                   color: theme === 'light' ? colors.darkBlue : colors.white,
                 }}
               />
-            </label>
-            <select
-              defaultValue="all"
-              onChange={({ target }) => filterCountriesPerRegion(target.value)}
-              style={{
-                backgoundColor: theme === 'light' ? colors.white : colors.darkBlue,
-              }}
-            >
-              <option value="all">All</option>
-              <option value="africa">Africa</option>
-              <option value="america">America</option>
-              <option value="asia">Asia</option>
-              <option value="europe">Europe</option>
-              <option value="oceania">Oceania</option>
-            </select>
-          </Center>
-        </Search>
 
+            </form>
+          </label>
+          <select
+            defaultValue="all"
+            onChange={({ target }) => filterCountriesPerRegion(target.value)}
+            style={{
+              backgoundColor: theme === 'light' ? colors.white : colors.darkBlue,
+            }}
+          >
+            <option value="all">All</option>
+            <option value="africa">Africa</option>
+            <option value="america">America</option>
+            <option value="asia">Asia</option>
+            <option value="europe">Europe</option>
+            <option value="oceania">Oceania</option>
+          </select>
+        </Center>
+      </Search>
+
+      {isLoading ? <Loading isLoading={isLoading} /> : (
         <GridMap>
           <Center style={centerGridMapStyle} className="center">
-            { countries && !searchedCountrie && countries.map(({
+            { countries && countries.map(({
               name, region, capital, flags, population,
             }) => (
               <Link to={`/details/${name.common.toLowerCase()}`} key={flags.svg} className="countrie">
@@ -148,8 +185,7 @@ export default () => {
             ))}
           </Center>
         </GridMap>
-      </section>
-      <Loading isLoading={isLoading} />
-    </>
+      )}
+    </section>
   );
 };
