@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // My imports
 import { Center, Header } from './styles';
 import * as actions from '../../store/modules/theme-switcher/actions';
-import * as funcs from './functions';
+import * as funcs from '../../functions/themeSwitcherFunctions';
 
 export default () => {
   const theme = useSelector(({ themeSwitcher }) => themeSwitcher.theme);

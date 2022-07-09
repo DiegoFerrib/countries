@@ -1,41 +1,60 @@
 import styled from 'styled-components';
+import { Center as GlobalCenter } from '../../styles/Global';
+
+// Novo
+
+export const Home = styled.section`
+  min-height: 90vh;
+  background-color: ${({ bgColor }) => bgColor};
+  color: ${({ fontColor }) => fontColor};
+`;
 
 export const Search = styled.div`
-  padding: 48px 30px;
+  padding: 4.8rem 3rem;
+`;
 
-  label {
+export const Center = styled(GlobalCenter)`
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+  flex-wrap: wrap;
+
+  form {
     display: flex;
-    height: 40px;
-    gap: 8px;
+    align-items: center;
+    gap: 0.8rem;
     width: 100%;
     max-width: 480px;
     box-shadow: 0px 0px 10px 4px rgba(151,151,151,0.1);
-    padding: 10px;
-    border-radius: 5px;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    height: 50px;
   }
 
-  form {
+  input {
     width: 100%;
-  }
-
-  #search {
-    width: 100%;
-    font-size: 16px;
+    font-size: 1.6rem;
     border: none;
     background-color: inherit;
     outline: none;
   }
-
-  select, option {
-    font-size: 16px;
-    height: 40px;
-    width: 100%;
-    max-width: 200px;
-    border: none;
-    box-shadow: 0px 0px 10px 4px rgba(151,151,151,0.1);
-    border-radius: 5px;
-  }
 `;
+
+export const Select = styled.select`
+  background-color: ${({ bgColor }) => bgColor};
+  color: inherit;
+  font-size: 1.6rem;
+  height: 50px;
+  width: 100%;
+  max-width: 200px;
+  border: none;
+  box-shadow: 0px 0px 10px 4px rgba(151,151,151,0.1);
+  border-radius: 0.5rem;
+`;
+
+export const Option = styled.option``;
+
+// Antigo
 
 export const GridMap = styled.section`
   padding: 0 30px 30px 30px;

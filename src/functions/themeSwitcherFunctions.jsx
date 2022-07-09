@@ -1,5 +1,5 @@
 import { FaMoon, FaSun } from 'react-icons/fa';
-import colors from '../../config/colors';
+import colors from '../config/colors';
 
 export const themeColorCondition = (fontOrElement, theme) => {
   if (fontOrElement === 'font') {

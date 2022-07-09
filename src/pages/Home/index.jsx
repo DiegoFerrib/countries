@@ -4,20 +4,14 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { FaSearch } from 'react-icons/fa';
 import {
-  GridMap, Search, Countrie,
+  Home, GridMap, Search, Countrie, Center, Select, Option,
 } from './styled';
 
-import { Center } from '../../styles/Global';
 import Loading from '../../components/Loading';
 import colors from '../../config/colors';
 import axios from '../../services/axios';
 
-const centerSearchStyle = {
-  display: 'flex',
-  justifyContent: 'space-between',
-  gap: '30px',
-  flexWrap: 'wrap',
-};
+import * as funcs from '../../functions/themeSwitcherFunctions';
 
 const centerGridMapStyle = {
   display: 'grid',
@@ -96,52 +90,36 @@ export default () => {
   };
 
   return (
-    <section style={{
-      backgroundColor: theme === 'light' ? colors.veryLightGray : colors.veryDarkBlueDark,
-      minHeight: '90vh',
-    }}
-    >
+    <Home bgColor={funcs.themeColorCondition('element', theme)} fontColor={funcs.themeColorCondition('font', theme)}>
       <Search>
-        <Center style={centerSearchStyle}>
-          <label
-            htmlFor="search"
-            style={{
-              backgoundColor: theme === 'light' ? colors.white : colors.darkBlue,
-            }}
+        <Center>
+          <form
+            method="get"
+            onSubmit={searchCountrie}
+            autoComplete="off"
           >
-            <FaSearch color={theme === 'light' ? colors.darkBlue : colors.white} size={20} />
-            <form
-              method="get"
-              onSubmit={searchCountrie}
-              autoComplete="off"
-            >
-              <input
-                type="search"
-                id="search"
-                placeholder="Search for a countrie..."
-                value={searchedCountrie}
-                onChange={({ target }) => setSearchedCountrie(target.value)}
-                style={{
-                  color: theme === 'light' ? colors.darkBlue : colors.white,
-                }}
-              />
+            <FaSearch size={20} />
+            <input
+              type="search"
+              placeholder="Search for a countrie..."
+              value={searchedCountrie}
+              onChange={({ target }) => setSearchedCountrie(target.value)}
+            />
+          </form>
 
-            </form>
-          </label>
-          <select
+          <Select
             defaultValue="all"
             onChange={({ target }) => filterCountriesPerRegion(target.value)}
-            style={{
-              backgoundColor: theme === 'light' ? colors.white : colors.darkBlue,
-            }}
+            bgColor={funcs.themeColorCondition('element', theme)}
           >
+            <Option value="teste">Teste</Option>
             <option value="all">All</option>
             <option value="africa">Africa</option>
             <option value="america">America</option>
             <option value="asia">Asia</option>
             <option value="europe">Europe</option>
             <option value="oceania">Oceania</option>
-          </select>
+          </Select>
         </Center>
       </Search>
 
@@ -186,6 +164,6 @@ export default () => {
           </Center>
         </GridMap>
       )}
-    </section>
+    </Home>
   );
 };
