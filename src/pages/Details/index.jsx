@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 
 import { Button, CountrieDetails, DetailsPage } from './styled';
-import { Center } from '../../styles/GlobalStyles';
+import { Center } from '../../styles/Global';
 import Loading from '../../components/Loading';
 import history from '../../services/history';
 import colors from '../../config/colors';

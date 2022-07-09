@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Center } from '../../styles/GlobalStyles';
+import { Center } from '../../styles/Global';
 
 import { Page404 } from './styled';
 import colors from '../../config/colors';

@@ -7,7 +7,7 @@ import {
   GridMap, Search, Countrie,
 } from './styled';
 
-import { Center } from '../../styles/GlobalStyles';
+import { Center } from '../../styles/Global';
 import Loading from '../../components/Loading';
 import colors from '../../config/colors';
 import axios from '../../services/axios';
