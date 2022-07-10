@@ -4,12 +4,12 @@ import { Center as GlobalCenter } from '../../styles/Global';
 export const Header = styled.header`
   position: sticky;
   top: 0;
+  z-index: 2;
   align-items: center;
   background-color: ${({ bgColor }) => bgColor};
   color: ${({ fontColor }) => fontColor};
   height: 10vh;
   box-shadow: 0px 7px 5px 0px rgba(117,117,117,0.6);
-  padding: 0 30px;
 
   h1 {
     font-size: clamp(1.6rem, 5vw, 2.8rem);

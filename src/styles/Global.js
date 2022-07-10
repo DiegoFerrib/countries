@@ -28,10 +28,10 @@ export default createGlobalStyle`
   }
 `;
 
-export const Center = styled.section`
+export const Center = styled.div`
   width: 100%;
   max-width: 1276px;
-  padding: 0 30px;
+  padding: 0 3rem;
   margin: 0 auto;
   min-height: ${(props) => `${props.minHeight}vh` || 'auto'};
   height: ${(props) => `${props.height}vh` || 'auto'};
