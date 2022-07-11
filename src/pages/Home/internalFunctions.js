@@ -7,7 +7,6 @@ export const searchAllCountries = async (
   setIsLoading,
   setCountries,
   setSearchedCountrie,
-  theme,
 ) => {
   try {
     setIsLoading(true);
@@ -15,19 +14,13 @@ export const searchAllCountries = async (
     setCountries(data);
     setIsLoading(false);
   } catch {
-    toast.error('Could not get data!', {
-      position: 'top-right',
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: theme === 'light' ? 'light' : 'dark',
-    });
+    toast.error('Could not get data!');
     setIsLoading(false);
   }
   setSearchedCountrie('');
 };
+
+let first = true;
 
 export const filterCountriesPerRegion = async (
   filterValue,
@@ -35,6 +28,8 @@ export const filterCountriesPerRegion = async (
   setCountries,
   setSearchedCountrie,
 ) => {
+  if (first && filterValue === 'all') return;
+
   try {
     setIsLoading(true);
     if (filterValue === 'all') {
@@ -42,6 +37,7 @@ export const filterCountriesPerRegion = async (
       setCountries(data);
       setSearchedCountrie('');
       setIsLoading(false);
+      first = false;
       return;
     }
 
@@ -49,9 +45,11 @@ export const filterCountriesPerRegion = async (
     setCountries(data);
     setSearchedCountrie('');
     setIsLoading(false);
+    first = false;
   } catch {
     toast.error('Could not get data!');
     setIsLoading(false);
+    first = false;
   }
 };
 

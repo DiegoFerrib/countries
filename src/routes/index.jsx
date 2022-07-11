@@ -7,7 +7,7 @@ import Page404 from '../pages/404/404';
 export default () => (
   <Switch>
     <Route exact path="/" component={Home} />
-    <Route path="/details/:countrie" component={Details} />
+    <Route path="/:countrie" component={Details} />
     <Route path="*" component={Page404} />
   </Switch>
 );

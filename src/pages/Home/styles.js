@@ -18,7 +18,6 @@ export const Center = styled(GlobalCenter)`
   justify-content: space-between;
   gap: 3rem;
   flex-wrap: wrap;
-  padding-bottom: 20px;
 
   form {
     display: flex;
@@ -52,6 +51,7 @@ export const Select = styled.select`
   border: none;
   box-shadow: 0px 0px 10px 4px rgba(151,151,151,0.1);
   border-radius: 5px;
+  padding: 0 1rem;
 `;
 
 export const Option = styled.option``;
@@ -61,4 +61,5 @@ export const GridMap = styled(GlobalCenter)`
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   justify-content: space-between;
   grid-gap: 50px;
+  padding-bottom: 3rem;
 `;

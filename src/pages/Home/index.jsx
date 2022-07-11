@@ -25,7 +25,6 @@ export default () => {
       setIsLoading,
       setCountries,
       setSearchedCountrie,
-      theme,
     );
   }, []);
 
@@ -85,7 +84,7 @@ export default () => {
           { countries && countries.map(({
             name, region, capital, flags, population,
           }) => (
-            <Link to={`/details/${name.common.toLowerCase()}`} key={flags.svg}>
+            <Link to={`/${name.common.toLowerCase()}`} key={flags.svg}>
               <Countrie
                 bgColor={funcs.themeColorCondition('element', theme)}
                 fontColor={funcs.themeColorCondition('font', theme)}

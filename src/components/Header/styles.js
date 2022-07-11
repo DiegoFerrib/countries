@@ -12,7 +12,7 @@ export const Header = styled.header`
   box-shadow: 0px 7px 5px 0px rgba(117,117,117,0.6);
 
   h1 {
-    font-size: clamp(1.6rem, 5vw, 2.8rem);
+    font-size: clamp(2rem, 5vw, 2.8rem);
     font-weight: 800;
   }
 

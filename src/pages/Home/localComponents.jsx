@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const Countrie = ({
   flags, name, population, region, capital,
 }) => (
-  <CountrieInfo flags={flags} name={name} population={population} region={region} capital={capital}>
+  <CountrieInfo>
     <img src={flags.svg} alt={`Flag: ${name.common}`} loading="lazy" />
     <div className="informations">
       <h2>{name.common}</h2>
@@ -31,7 +31,7 @@ const CountrieInfo = styled.div`
   display: flex;
   border-radius: 8px;
   flex-direction: column;
-  height: 380px;
+  height: 400px;
   box-shadow: 0px 0px 10px 4px rgba(151,151,151,0.1);
   background-color: ${({ bgColor }) => bgColor};
   transition: 400ms;
@@ -58,8 +58,12 @@ const CountrieInfo = styled.div`
     transition: none;
 
     h2 {
-      font-size: 25px;
+      font-size: clamp(2rem, 5vw, 2.8rem);
       margin-bottom: 8px;
+    }
+
+    p {
+      font-size: clamp(1.2rem, 2.5vw, 2rem);
     }
   }
 
