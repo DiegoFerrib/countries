@@ -85,23 +85,19 @@ export default () => {
         <GridMap>
           { countries && countries.map(({
             name, region, capital, flags, population,
-          }) => {
-            const url = name.common.toLowerCase().replace(/\s/g, '%20');
-
-            return (
-              <Link to={`/${url}`} key={flags.svg}>
-                <Countrie
-                  bgColor={funcs.themeColorCondition('element', theme)}
-                  fontColor={funcs.themeColorCondition('font', theme)}
-                  flags={flags}
-                  name={name}
-                  population={population}
-                  region={region}
-                  capital={capital}
-                />
-              </Link>
-            );
-          })}
+          }) => (
+            <Link to={`/${encodeURI(name.common.toLowerCase())}`} key={flags.svg}>
+              <Countrie
+                bgColor={funcs.themeColorCondition('element', theme)}
+                fontColor={funcs.themeColorCondition('font', theme)}
+                flags={flags}
+                name={name}
+                population={population}
+                region={region}
+                capital={capital}
+              />
+            </Link>
+          ))}
         </GridMap>
       )}
     </Home>
