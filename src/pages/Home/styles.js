@@ -3,7 +3,7 @@ import { Center as GlobalCenter } from '../../styles/Global';
 
 // Novo
 
-export const Home = styled.section`
+export const Home = styled.main`
   min-height: 90vh;
   background-color: ${({ bgColor }) => bgColor};
   color: ${({ fontColor }) => fontColor};

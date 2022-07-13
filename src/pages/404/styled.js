@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Page404 = styled.section`
+export const Page404 = styled.main`
 
   .center {
     display: flex;

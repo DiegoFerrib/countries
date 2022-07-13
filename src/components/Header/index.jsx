@@ -21,16 +21,17 @@ export default () => {
       bgColor={funcs.themeColorCondition('element', theme)}
       fontColor={funcs.themeColorCondition('font', theme)}
     >
-      <Center>
+      <Center as="nav">
         <Link to="/">
           <h1>Where in the world?</h1>
         </Link>
         <button
+          aria-label="Change theme"
           type="button"
           onClick={themeSwitcher}
         >
           {funcs.iconSwitcher(theme)}
-          <span>Dark Mode</span>
+          {theme === 'light' ? <span>Dark Mode</span> : <span>Light Mode</span>}
         </button>
       </Center>
     </Header>

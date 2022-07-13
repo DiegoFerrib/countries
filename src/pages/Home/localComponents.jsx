@@ -5,7 +5,7 @@ export const Countrie = ({
   flags, name, population, region, capital,
 }) => (
   <CountrieInfo>
-    <img src={flags.svg} alt={`${name.common} flag.`}/>
+    <img src={flags.svg} alt={`${name.common} flag.`} />
     <div className="informations">
       <h2>{name.common}</h2>
       <p>

@@ -52,6 +52,7 @@ export default () => {
           >
             <FaSearch size={20} />
             <input
+              aria-label="Search for an country."
               type="search"
               placeholder="Search for a countrie..."
               value={searchedCountrie}
@@ -60,6 +61,7 @@ export default () => {
           </form>
 
           <Select
+            aria-label="Select a region."
             bgColor={funcs.themeColorCondition('element', theme)}
             defaultValue="default"
             onChange={({ target }) => filterCountriesPerRegion(
@@ -84,7 +86,7 @@ export default () => {
           { countries && countries.map(({
             name, region, capital, flags, population,
           }) => (
-            <Link to={`/${name.common.toLowerCase()}`} key={flags.svg}>
+            <Link to={`/${name.common.replace(' ', '%20').toLowerCase()}`} key={flags.svg}>
               <Countrie
                 bgColor={funcs.themeColorCondition('element', theme)}
                 fontColor={funcs.themeColorCondition('font', theme)}
